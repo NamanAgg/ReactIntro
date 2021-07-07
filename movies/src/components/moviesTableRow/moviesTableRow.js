@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from '../rating/rating';
 import "./moviesTableRow.css";
 
 class MoviesTableRow extends React.Component {
@@ -10,11 +11,11 @@ class MoviesTableRow extends React.Component {
     render() {
         let { sno, name, genre, rating } = this.props.data;
         return (
-            <div className="movies-table-row">
+            <div className="movies-table-row" style={this.props.header ? { fontWeight: "bold" } : {}}>
                 <div className="column serial-number">{sno + "."}</div>
                 <div className="column movie-name">{name}</div>
                 <div className="column genre">{genre}</div>
-                <div className="column rating">{rating}</div>
+                <div className="column rating">{this.props.header ? rating : <Rating rating={rating} />} </div>
             </div>
         )
     }
