@@ -7,8 +7,10 @@ import MoviesTable from '../../components/moviesTable/moviesTable';
 import NavBar from '../../components/navBar/navBar';
 import Pagination from '../../components/pagination/pagination';
 import SideBar from '../../components/sideBar/sideBar';
+import Loader from '../../components/loader/loader';
 import "./moviesList.css";
 import axios from 'axios';
+import { HandleGetMovies } from './dataManager';
 
 class MoviesList extends React.Component {
     constructor(props) {
@@ -17,17 +19,17 @@ class MoviesList extends React.Component {
             search: "",
             pageNumber: 1,
             "rating": "all",
-            data:[]
+            data: [],
+            loader: true
         };
     }
 
-    componentDidMount() {
-        axios.get("https://apimovies.free.beeceptor.com/movies").then((res) => {
-            console.log(res.data);
-            this.setState({
-              data: res.data
-            });
-        })
+    async componentDidMount() {
+        let data = await HandleGetMovies();
+        this.setState({
+            data: data,
+            loader: false
+        });
     }
 
     changeSearch = (e) => {
@@ -51,7 +53,7 @@ class MoviesList extends React.Component {
     }
 
     render() {
-        let data =this.state.data;
+        let data = this.state.data;
 
         let filteredData = data.filter((movie) => {
             if (this.state.rating !== "all") {
@@ -73,6 +75,7 @@ class MoviesList extends React.Component {
 
         return (
             <div className="main-container">
+                {this.state.loader ? <Loader /> : ""}
                 <NavBar />
                 <SideBar />
                 <div className="movie-table-container">
