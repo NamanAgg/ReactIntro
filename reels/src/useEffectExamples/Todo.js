@@ -4,7 +4,6 @@ function Todo() {
     const [value, setValue] = useState("");
     const [taskList, setTaskList] = useState([]);
     const setTask = function () {
-        // /
         let newTaskList = [...taskList];
         newTaskList.push({
             id: Date.now(),
@@ -19,12 +18,12 @@ function Todo() {
         })
         setTaskList(restOftasks);
     }
-    //    empty dependnecy array -> it will run only once just after first render 
+    //    empty dependnecy array -> it will run only once just after first render (componentDidMount) 
     useEffect(() => {
         console.log("use effect of todo ran")
 
     }, [])
-    //  cdm+cdu with dependency  -> useEffect with a dependency array 
+    //  cdm+cdu with dependency  -> useEffect with a dependency array (componentDidUpdate) and (componentDidMount) or (componentShouldMount)
     useEffect(() => {
         console.log("use effect with dependency array");
     }, [taskList])
