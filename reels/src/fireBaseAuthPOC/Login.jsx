@@ -1,17 +1,8 @@
-import React, {useState} from'react';
-import firebase from './firebase'
-//authentication use
- //email, password -> firebase 
-       
-const auth=firebase.auth();
-function Login(){
-     // **********firebase console
-        //auth start
-        //enable->firebase console
-        //user create on firbase side
-
-        //npm i firebase -> local machine
-        //firebase login
+import React, { useState, useEffect } from 'react'
+import firebase from './firebase';
+// authectication use 
+const auth = firebase.auth();
+function Login() {
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
     let [userId, setuserId] = useState("");
@@ -20,6 +11,7 @@ function Login(){
     const loginFn = async () => {
         try {
             setLoginLoader(true);
+            // firebase 
             let res = await auth.signInWithEmailAndPassword(email, password);
             // unique id
             console.log(res.user.uid);
@@ -66,8 +58,7 @@ function Login(){
     return (
         // form will available
         loginLoder == true ? <h1>Loading....</h1>
-            : userId ?
-                <>
+            : userId ?<>
                     <h1>{userId}
                     </h1>
                     <button
