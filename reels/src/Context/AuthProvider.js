@@ -1,42 +1,40 @@
-// context create
-import React, { useState, useEffect } from "react";
-import firebase from '../firebaseAuthPOC/firebase';
-// 1.
+import React,{useState,useEffect} from "react";
+import firebase from "firebase";
+
 export const AuthContext = React.createContext();
 const auth = firebase.auth();
-// reciever -> children
-// firebase data get time required 
-export default function AuthProvider({ children }) {
-    // specific keyword by react 
-    const [currentUser, setCurrentUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    async function genericlogin(email, password) {
-        // vendor function
-        return auth.signInWithEmailAndPassword(email, password);
+
+export default function AuthProvider({children}){
+
+    const [currentUser,setCurrentUser]= useState(null);
+    const [loading,setLoading] = useState(true);
+    
+    async function genericLogin(email,password){
+        return  auth.signInWithEmailAndPassword(email,password)
     }
-    async function genericSignup(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password)
+    async function genericSignUp(email,password){
+        return auth.createUserWithEmailAndPassword(email,password)
     }
 
-    
-    useEffect(() => {
-        console.log("useEffect ran");
-        function action(user) {
-            console.log("line number 18", user);
-            setCurrentUser(user);
-            setLoading(false);
+    useEffect(()=>{
+        console.log("useeffect ran");
+        function action(user){
+            console.log("line 18",user);
+            setCurrentUser(user)
+            setLoading(false)
         }
-        // listener -> state change auth -> login logout 
-        auth.onAuthStateChanged(action);
-    }, [])
+        auth.onAuthStateChanged(action)
+    },[])
+
     const value = {
-        genericlogin,
-        genericSignup,
+        genericLogin,
+        genericSignUp,
         currentUser
     }
-    return (
+    return(
         <AuthContext.Provider value={value}>
             {!loading && children}
         </AuthContext.Provider>
     )
+
 }

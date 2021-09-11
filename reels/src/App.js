@@ -1,28 +1,29 @@
-import Login from "./Components/Login";
-import Feed from "./Components/Feed";
-import Profile from "./Components/Profile";
-import Signup from "./Components/Signup";
-import AuthProvider from "./Context/AuthProvider";
+import logo from './logo.svg';
+import './App.css';
+import Login from './pages/login';
+import ToDo from './pages/example';
+import Profile from './pages/profile';
+import SignIn from './pages/signin';
+import Feed from './pages/feed';
+import AuthProvider from "../src/context/AuthProvider";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { AuthContext } from "./Context/AuthProvider";
+import { AuthContext } from "../src/context/AuthProvider";
 import { useContext } from "react";
-// let isAuthenticated = false;
+
 function App() {
-  return (   <>
-      {/* <h1>Hello Reels</h1> */}
-      {/* <Login></Login> */}
-      {/* <Todo></Todo> */}
-      {/* 3. */}
-      <AuthProvider>
-        <Switch>
-          <Route path="/login" component={Login}></Route>
-          <Route path="/signup" component={Signup}></Route>
-          <ProtectedRoute path="/feed" abc={Feed}></ProtectedRoute>
-          <ProtectedRoute path="/profile" abc={Profile}></ProtectedRoute>
-          <Redirect path="/" to="/feed"></Redirect>
-        </Switch>
-      </AuthProvider>
-    </>
+  return (
+   <>
+   <AuthProvider>
+     <Switch>
+       <Route path="/login" component={Login}/>
+       <Route path="/signin" component={SignIn}/>
+       <ProtectedRoute path="/feed" abc={Feed} />
+       <ProtectedRoute path="/profile" abc={Profile} />
+       <Redirect path="/" to="/feed"></Redirect>
+
+     </Switch>
+   </AuthProvider>
+   </>
   );
 }
 function ProtectedRoute(props) {
@@ -38,4 +39,5 @@ function ProtectedRoute(props) {
   }}></Route>
   )
 }
+
 export default App;

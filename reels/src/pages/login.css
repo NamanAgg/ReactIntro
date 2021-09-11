@@ -1,0 +1,63 @@
+.login-container
+{
+    margin-top: 8vh;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+}
+.imgcar
+{
+    width: 441px;
+    height: 590px;
+    position: relative;
+}
+
+.login-form
+{
+    flex-basis: 25vw;
+    flex-grow: 0;
+}
+.insta-head
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caro
+{
+    height: 423px;
+    width: 241px;
+    position: absolute;
+    left: 143px;
+    top: 93px;
+}
+/* style={{height:"62vh",width:"22rem",backgroundColor:"white",display:"flex",flexDirection:"column",
+    alignItems:"center",border:"0.5px solid lightgray",position:"fixed",right:"20rem",top:"5rem",}} */
+.login-box{
+    height: 62vh;
+    width: 22rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.5px solid lightgray;
+    position: relative;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    
+}
+@media only screen and (max-width: 749px) {
+   
+    .login-form
+    {
+        flex-basis: 70vw !important;
+    }
+  }
+  @media only screen and (max-width: 750px) {
+      .imgcar{
+          display: none;
+      }
+  }
