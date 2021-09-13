@@ -33,22 +33,6 @@
     left: 143px;
     top: 93px;
 }
-/* style={{height:"62vh",width:"22rem",backgroundColor:"white",display:"flex",flexDirection:"column",
-    alignItems:"center",border:"0.5px solid lightgray",position:"fixed",right:"20rem",top:"5rem",}} */
-.login-box{
-    height: 62vh;
-    width: 22rem;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 0.5px solid lightgray;
-    position: relative;
-    left: 50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-    
-}
 @media only screen and (max-width: 749px) {
    
     .login-form
