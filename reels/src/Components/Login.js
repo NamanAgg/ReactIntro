@@ -204,9 +204,9 @@ export default function Login() {
           </Card>
           <Alert severity="success" style={{ marginTop: "20px" }}>
             <AlertTitle>Guest Login</AlertTitle>
-            E-mail: <strong>admin.reels@gmail.com</strong>
+            E-mail: <strong>abc@gmail.com</strong>
             <br></br>
-            password: <strong>123456789</strong>
+            password: <strong>qwerty</strong>
           </Alert>
         </div>
       </div>
